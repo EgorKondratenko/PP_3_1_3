@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit user</title>
+    <title>Update user</title>
 
 </head>
 <body>
-<h1>Edit user</h1><br>
+<h1>Update user</h1><br>
 <form th:method="post" th:action="@{/admin/updateUser/{userId}(userId=${update.getId()})}" th:object="${update}" >
     <table>
         <tr><td>Name</td><td><input th:type="text" th:field="*{name}" required th:value="${update.getName()}" class="data"></td></tr>
