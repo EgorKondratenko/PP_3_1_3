@@ -24,6 +24,12 @@ public class UserController {
         model.addAttribute("user", user);
         return "user";
     }
+    @GetMapping("/admin")
+    public String findAll(Model model) {
+        model.addAttribute("users", userService.findAll());
+        return "users";
+    }
+
     @GetMapping("/admin/createUser")
     public String createNewUser(Model model) {
         model.addAttribute("user", new User());
@@ -55,9 +61,5 @@ public class UserController {
         return "redirect:/admin";
     }
 
-    @GetMapping()
-    public String findAll(Model model) {
-        model.addAttribute("users", userService.findAll());
-        return "users";
-    }
+
 }
