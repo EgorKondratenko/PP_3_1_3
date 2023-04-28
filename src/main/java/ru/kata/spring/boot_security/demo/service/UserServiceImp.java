@@ -1,8 +1,6 @@
 package ru.kata.spring.boot_security.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,21 +54,10 @@ public class UserServiceImp implements UserService {
     @Transactional
     public void updateUser(User user) {
         userRepository.save(user);
-//        entityManager.merge(user);
-//        entityManager.flush();
     }
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
-//    @Override
-//    @Transactional
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = findByName(username);
-//        if (user == null) {
-//            throw new UsernameNotFoundException(String.format("User '%s' not found", username));
-//        }
-//        return user;
-//    }
 }
