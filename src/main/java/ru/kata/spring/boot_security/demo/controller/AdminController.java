@@ -13,13 +13,12 @@ import ru.kata.spring.boot_security.demo.service.UserServiceImp;
 public class AdminController {
 
     private final UserServiceImp userServiceImp;
-
     @Autowired
     public AdminController(UserServiceImp userServiceImp) {
         this.userServiceImp = userServiceImp;
     }
 
-    @GetMapping()
+    @GetMapping
     public String findAll(Model model) {
         model.addAttribute("users", userServiceImp.findAll());
         return "users";
@@ -46,12 +45,13 @@ public class AdminController {
     @GetMapping("/updateUser/{id}")
     public String updateUser(@PathVariable Long id, Model model) {
         model.addAttribute("update", userServiceImp.getUserById(id));
+//        model.addAttribute("update",true);
         return "updateUser";
     }
 
     @PostMapping("/updateUser/{getId}")
-    public String saveUpdateUser(@PathVariable Long getId, @ModelAttribute("user") User user) {
-        user.setId(getId);
+    public String saveUpdateUser(@PathVariable Long id, @ModelAttribute("user") User user) {
+        user.setId(id);
         userServiceImp.updateUser(user);
         return "redirect:/admin";
     }
